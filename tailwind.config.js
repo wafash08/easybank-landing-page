@@ -18,6 +18,16 @@ export default {
           "very-light-gray": "#fafafa",
         },
       },
+      backgroundImage: {
+        "intro-mobile": "url(/images/bg-intro-mobile.svg)",
+        "intro-dekstop": "url(/images/bg-intro-desktop.svg)",
+        mockups: "url(/images/mockups.webp)",
+      },
+      backgroundSize: {
+        "93%": "93%",
+        "52%": "52%",
+        "70%": "70%",
+      },
     },
   },
   plugins: [],
