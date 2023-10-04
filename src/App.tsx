@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import clsx from "clsx";
 import {
   BudgetingIcon,
@@ -23,6 +23,13 @@ export default function App() {
     setIsExpanded(false);
   };
 
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.code === "Escape") {
+      setIsExpanded(false);
+    }
+    console.log("hello");
+  }, []);
+
   useEffect(() => {
     if (isExpanded) {
       document.body.style.overflow = "hidden";
@@ -30,6 +37,13 @@ export default function App() {
       document.body.removeAttribute("style");
     }
   }, [isExpanded]);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleKeyDown]);
 
   return (
     <>
