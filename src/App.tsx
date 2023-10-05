@@ -47,7 +47,7 @@ export default function App() {
   return (
     <>
       <header className='px-6 relative bg-white z-10'>
-        <div className='flex justify-between items-center h-16 max-w-[1200px] mx-auto'>
+        <div className='flex justify-between items-center h-16 lg:h-20 max-w-[1200px] mx-auto'>
           <div className='flex items-center'>
             <a
               href='#'
@@ -82,7 +82,7 @@ export default function App() {
             <div className='lg:flex-[2] lg:self-center'>
               <div className='p-6 grid place-content-center'>
                 <div className='flex flex-col gap-6 items-center lg:items-start max-w-md'>
-                  <h1 className='text-4xl md:text-5xl text-primary-dark-blue text-center lg:text-left'>
+                  <h1 className='text-4xl md:text-6xl text-primary-dark-blue text-center lg:text-left'>
                     Next generation digital banking
                   </h1>
                   <p className='text-neutral-grayish-blue text-center lg:text-left'>
@@ -99,11 +99,11 @@ export default function App() {
 
         <section
           aria-label='Feature section'
-          className='bg-neutral-light-grayish-blue py-12 lg:py-16'
+          className='bg-neutral-light-grayish-blue py-12 lg:py-24'
         >
-          <div className='max-w-[1200px] mx-auto grid gap-6 lg:gap-10'>
-            <div className='flex flex-col gap-4 items-center md:items-start text-center md:text-left px-6 lg:px-0'>
-              <h2 className='text-3xl lg:text-4xl text-primary-dark-blue w-[200px] md:w-full'>
+          <div className='max-w-[1200px] mx-auto grid gap-6 lg:gap-16'>
+            <div className='flex flex-col gap-4 lg:gap-8 items-center md:items-start text-center md:text-left px-6 lg:px-0'>
+              <h2 className='text-3xl lg:text-5xl text-primary-dark-blue w-[200px] md:w-full'>
                 Why choose Easybank?
               </h2>
               <p className='text-neutral-grayish-blue md:w-3/4 lg:w-1/2'>
@@ -121,7 +121,7 @@ export default function App() {
           className='bg-neutral-very-light-gray py-16'
         >
           <div className='max-w-[1200px] mx-auto grid gap-6 lg:gap-10'>
-            <h2 className='text-3xl lg:text-4xl text-primary-dark-blue text-center md:text-left md:ml-6 lg:ml-0'>
+            <h2 className='text-3xl lg:text-5xl text-primary-dark-blue text-center md:text-left md:ml-6 lg:ml-0'>
               Latest Articles
             </h2>
             <ArticleList />
@@ -448,7 +448,7 @@ type FeatureItemProps = {
 function FeatureItem({ description, icon, title }: FeatureItemProps) {
   return (
     <li>
-      <section className='flex flex-col gap-4 lg:gap-6 items-center p-6 lg:p-0 text-center md:items-start md:text-left'>
+      <section className='flex flex-col gap-4 lg:gap-8 items-center p-6 lg:p-0 text-center md:items-start md:text-left'>
         {icon}
         <h3 className='text-primary-dark-blue text-2xl capitalize'>{title}</h3>
         <p className='text-neutral-grayish-blue'>{description}</p>
@@ -460,92 +460,93 @@ function FeatureItem({ description, icon, title }: FeatureItemProps) {
 const ARTICLE_LIST: ArticleItemProps[] = [
   {
     author: "Claire Robinson",
-    imageUrl: "currency.webp",
+    image: {
+      url: "currency.webp",
+      height: 400,
+      width: 533,
+    },
     summary:
       "The world is getting smaller and we’re becoming more mobile. So why should you be forced to only receive money in a single …",
     title: "Receive money in any currency with no fees",
-    height: 400,
-    width: 533,
   },
   {
     author: "Wilson Hutton",
-    imageUrl: "restaurant.webp",
+    image: {
+      url: "restaurant.webp",
+      height: 400,
+      width: 600,
+    },
     summary:
       "Our simple budgeting feature allows you to separate out your spending and set realistic limits each month. That means you …",
     title: "Treat yourself without worrying about money",
-    height: 400,
-    width: 600,
   },
   {
     author: "Wilson Hutton",
-    imageUrl: "plane.webp",
+    image: {
+      url: "plane.webp",
+      height: 400,
+      width: 600,
+    },
     summary:
       "We want you to enjoy your travels. This is why we don’t charge any fees on purchases while you’re abroad. We’ll even show you …",
     title: "Take your Easybank card wherever you go",
-    height: 400,
-    width: 600,
   },
   {
     author: "Claire Robinson",
-    imageUrl: "confetti.webp",
+    image: {
+      url: "confetti.webp",
+      height: 400,
+      width: 600,
+    },
     summary:
       "After a lot of hard work by the whole team, we’re excited to launch our closed beta. It’s easy to request an invite through the site ...",
     title: "Our invite-only Beta accounts are now live!",
-    height: 400,
-    width: 600,
   },
 ];
 
 function ArticleList() {
   return (
     <ul className='px-6 lg:px-0 grid gap-6 md:grid-cols-2 lg:grid-cols-4'>
-      {ARTICLE_LIST.map(
-        ({ author, imageUrl, summary, title, height, width }) => {
-          return (
-            <ArticleItem
-              key={title}
-              author={author}
-              imageUrl={imageUrl}
-              summary={summary}
-              title={title}
-              height={height}
-              width={width}
-            />
-          );
-        }
-      )}
+      {ARTICLE_LIST.map(({ author, image, summary, title }) => {
+        return (
+          <ArticleItem
+            key={title}
+            author={author}
+            summary={summary}
+            title={title}
+            image={image}
+          />
+        );
+      })}
     </ul>
   );
 }
 
-type ArticleItemProps = {
-  imageUrl: string;
-  author: string;
-  title: string;
-  summary: string;
+type Image = {
+  url: string;
   width: number;
   height: number;
 };
 
-function ArticleItem({
-  author,
-  imageUrl,
-  summary,
-  title,
-  height,
-  width,
-}: ArticleItemProps) {
+type ArticleItemProps = {
+  image: Image;
+  author: string;
+  title: string;
+  summary: string;
+};
+
+function ArticleItem({ author, image, summary, title }: ArticleItemProps) {
   return (
     <li>
       <article className='group grid bg-white rounded overflow-hidden shadow-sm cursor-pointer'>
         <div className='overflow-hidden h-[220px] lg:h-[180px] object-cover'>
           <img
-            src={`/images/${imageUrl}`}
+            src={`/images/${image.url}`}
             alt={title}
             className='w-full transition-transform duration-500 ease-in-out group-hover:scale-105'
             loading='lazy'
-            width={width}
-            height={height}
+            width={image.width}
+            height={image.height}
           />
         </div>
         <section className='p-6 grid gap-4'>
