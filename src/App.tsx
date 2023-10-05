@@ -30,14 +30,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (isExpanded) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.removeAttribute("style");
-    }
-  }, [isExpanded]);
-
-  useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
