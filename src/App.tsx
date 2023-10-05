@@ -298,7 +298,7 @@ function MobileNavigation({
       className={clsx(
         "z-10 md:hidden block absolute top-16 left-0 w-full h-screen-min-16 p-6 transition-transform duration-300 ease-in-out",
         "bg-gradient-to-b from-neutral-grayish-blue to-transparent",
-        isExpanded ? "translate-x-0" : "translate-x-full"
+        isExpanded ? "translate-x-0 visible" : "translate-x-full invisible"
       )}
       onClick={handleClose}
     >
