@@ -464,6 +464,8 @@ const ARTICLE_LIST: ArticleItemProps[] = [
     summary:
       "The world is getting smaller and we’re becoming more mobile. So why should you be forced to only receive money in a single …",
     title: "Receive money in any currency with no fees",
+    height: 400,
+    width: 533,
   },
   {
     author: "Wilson Hutton",
@@ -471,6 +473,8 @@ const ARTICLE_LIST: ArticleItemProps[] = [
     summary:
       "Our simple budgeting feature allows you to separate out your spending and set realistic limits each month. That means you …",
     title: "Treat yourself without worrying about money",
+    height: 400,
+    width: 600,
   },
   {
     author: "Wilson Hutton",
@@ -478,6 +482,8 @@ const ARTICLE_LIST: ArticleItemProps[] = [
     summary:
       "We want you to enjoy your travels. This is why we don’t charge any fees on purchases while you’re abroad. We’ll even show you …",
     title: "Take your Easybank card wherever you go",
+    height: 400,
+    width: 600,
   },
   {
     author: "Claire Robinson",
@@ -485,23 +491,29 @@ const ARTICLE_LIST: ArticleItemProps[] = [
     summary:
       "After a lot of hard work by the whole team, we’re excited to launch our closed beta. It’s easy to request an invite through the site ...",
     title: "Our invite-only Beta accounts are now live!",
+    height: 400,
+    width: 600,
   },
 ];
 
 function ArticleList() {
   return (
     <ul className='px-6 lg:px-0 grid gap-6 md:grid-cols-2 lg:grid-cols-4'>
-      {ARTICLE_LIST.map(({ author, imageUrl, summary, title }) => {
-        return (
-          <ArticleItem
-            key={title}
-            author={author}
-            imageUrl={imageUrl}
-            summary={summary}
-            title={title}
-          />
-        );
-      })}
+      {ARTICLE_LIST.map(
+        ({ author, imageUrl, summary, title, height, width }) => {
+          return (
+            <ArticleItem
+              key={title}
+              author={author}
+              imageUrl={imageUrl}
+              summary={summary}
+              title={title}
+              height={height}
+              width={width}
+            />
+          );
+        }
+      )}
     </ul>
   );
 }
@@ -511,9 +523,18 @@ type ArticleItemProps = {
   author: string;
   title: string;
   summary: string;
+  width: number;
+  height: number;
 };
 
-function ArticleItem({ author, imageUrl, summary, title }: ArticleItemProps) {
+function ArticleItem({
+  author,
+  imageUrl,
+  summary,
+  title,
+  height,
+  width,
+}: ArticleItemProps) {
   return (
     <li>
       <article className='group grid bg-white rounded overflow-hidden shadow-sm cursor-pointer'>
@@ -522,6 +543,9 @@ function ArticleItem({ author, imageUrl, summary, title }: ArticleItemProps) {
             src={`/images/${imageUrl}`}
             alt={title}
             className='w-full transition-transform duration-500 ease-in-out group-hover:scale-105'
+            loading='lazy'
+            width={width}
+            height={height}
           />
         </div>
         <section className='p-6 grid gap-4'>
