@@ -80,9 +80,9 @@ export default function App() {
           <div className='max-w-[1200px] mx-auto flex flex-col lg:flex-row-reverse'>
             <div className='bg-intro lg:flex-[3]' />
             <div className='lg:flex-[2] lg:self-center'>
-              <div className='p-6 grid place-content-center'>
+              <div className='p-6 lg:p-0 grid place-content-center'>
                 <div className='flex flex-col gap-6 items-center lg:items-start max-w-md'>
-                  <h1 className='text-4xl md:text-6xl text-primary-dark-blue text-center lg:text-left'>
+                  <h1 className='text-4xl md:text-[52px] leading-[1.2] text-primary-dark-blue text-center lg:text-left'>
                     Next generation digital banking
                   </h1>
                   <p className='text-neutral-grayish-blue text-center lg:text-left'>
@@ -103,7 +103,7 @@ export default function App() {
         >
           <div className='max-w-[1200px] mx-auto grid gap-6 lg:gap-16'>
             <div className='flex flex-col gap-4 lg:gap-8 items-center md:items-start text-center md:text-left px-6 lg:px-0'>
-              <h2 className='text-3xl lg:text-5xl text-primary-dark-blue w-[200px] md:w-full'>
+              <h2 className='text-3xl lg:text-4xl text-primary-dark-blue w-[200px] md:w-full'>
                 Why choose Easybank?
               </h2>
               <p className='text-neutral-grayish-blue md:w-3/4 lg:w-1/2'>
@@ -121,7 +121,7 @@ export default function App() {
           className='bg-neutral-very-light-gray py-16'
         >
           <div className='max-w-[1200px] mx-auto grid gap-6 lg:gap-10'>
-            <h2 className='text-3xl lg:text-5xl text-primary-dark-blue text-center md:text-left md:ml-6 lg:ml-0'>
+            <h2 className='text-3xl lg:text-4xl text-primary-dark-blue text-center md:text-left md:ml-6 lg:ml-0'>
               Latest Articles
             </h2>
             <ArticleList />
