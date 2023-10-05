@@ -3,19 +3,22 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "public-sans";
+  font-family: "public-sans", sans-serif;
   src: url("/fonts/PublicSans-Regular.ttf");
   font-weight: 400;
+  font-display: swap;
 }
 @font-face {
-  font-family: "public-sans";
+  font-family: "public-sans", sans-serif;
   src: url("/fonts/PublicSans-Light.ttf");
   font-weight: 300;
+  font-display: swap;
 }
 @font-face {
-  font-family: "public-sans";
+  font-family: "public-sans", sans-serif;
   src: url("/fonts/PublicSans-Bold.ttf");
   font-weight: 700;
+  font-display: swap;
 }
 
 @layer base {

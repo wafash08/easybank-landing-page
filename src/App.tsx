@@ -301,7 +301,6 @@ function MobileNavigation({
         isExpanded ? "translate-x-0" : "translate-x-full"
       )}
       onClick={handleClose}
-      aria-expanded={isExpanded}
     >
       <nav className='rounded-md bg-white' aria-label='Navigation Menu'>
         <ul className='flex flex-col py-4' aria-label='menu list'>
@@ -461,28 +460,28 @@ function FeatureItem({ description, icon, title }: FeatureItemProps) {
 const ARTICLE_LIST: ArticleItemProps[] = [
   {
     author: "Claire Robinson",
-    imageUrl: "currency",
+    imageUrl: "currency.webp",
     summary:
       "The world is getting smaller and we’re becoming more mobile. So why should you be forced to only receive money in a single …",
     title: "Receive money in any currency with no fees",
   },
   {
     author: "Wilson Hutton",
-    imageUrl: "restaurant",
+    imageUrl: "restaurant.webp",
     summary:
       "Our simple budgeting feature allows you to separate out your spending and set realistic limits each month. That means you …",
     title: "Treat yourself without worrying about money",
   },
   {
     author: "Wilson Hutton",
-    imageUrl: "plane",
+    imageUrl: "plane.webp",
     summary:
       "We want you to enjoy your travels. This is why we don’t charge any fees on purchases while you’re abroad. We’ll even show you …",
     title: "Take your Easybank card wherever you go",
   },
   {
     author: "Claire Robinson",
-    imageUrl: "confetti",
+    imageUrl: "confetti.webp",
     summary:
       "After a lot of hard work by the whole team, we’re excited to launch our closed beta. It’s easy to request an invite through the site ...",
     title: "Our invite-only Beta accounts are now live!",
@@ -520,7 +519,7 @@ function ArticleItem({ author, imageUrl, summary, title }: ArticleItemProps) {
       <article className='group grid bg-white rounded overflow-hidden shadow-sm cursor-pointer'>
         <div className='overflow-hidden h-[220px] lg:h-[180px] object-cover'>
           <img
-            src={`/images/${imageUrl}.jpg`}
+            src={`/images/${imageUrl}`}
             alt={title}
             className='w-full transition-transform duration-500 ease-in-out group-hover:scale-105'
           />
