@@ -6,9 +6,6 @@
   html {
     font-family: "Public Sans", sans-serif;
   }
-  body {
-    overflow-x: hidden;
-  }
 }
 
 .bg-intro {

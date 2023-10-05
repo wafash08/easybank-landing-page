@@ -30,6 +30,14 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (isExpanded) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.removeAttribute("style");
+    }
+  }, [isExpanded]);
+
+  useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
@@ -38,8 +46,8 @@ export default function App() {
 
   return (
     <>
-      <header className='px-6 relative bg-white z-10'>
-        <div className='flex justify-between items-center h-16 lg:h-20 max-w-[1200px] mx-auto'>
+      <header id='header' className='px-6 relative bg-white z-10'>
+        <div className='z-10 flex justify-between items-center h-16 lg:h-20 max-w-[1200px] mx-auto'>
           <div className='flex items-center'>
             <a
               href='#'
@@ -57,12 +65,12 @@ export default function App() {
               <HamburgerButton handleOpen={handleOpen} />
             )}
           </div>
-          <MobileNavigation isExpanded={isExpanded} handleClose={handleClose} />
           <DesktopNavigation />
           <div className='hidden md:block'>
             <CTAButton>request invite</CTAButton>
           </div>
         </div>
+        <MobileNavigation isExpanded={isExpanded} handleClose={handleClose} />
       </header>
       <main>
         <section
@@ -288,9 +296,9 @@ function MobileNavigation({
   return (
     <div
       className={clsx(
-        "z-10 md:hidden block absolute top-16 left-0 w-full h-screen-min-16 p-6 transition-transform duration-300 ease-in-out",
+        "md:hidden absolute top-16 left-0 w-full h-screen-min-16 p-6 transition-all duration-300 ease-in-out",
         "bg-gradient-to-b from-neutral-grayish-blue to-transparent",
-        isExpanded ? "translate-x-0 visible" : "translate-x-full invisible"
+        isExpanded ? "translate-x-0 visible" : "-translate-x-full invisible"
       )}
       onClick={handleClose}
     >
