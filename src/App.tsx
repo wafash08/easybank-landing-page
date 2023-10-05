@@ -27,7 +27,6 @@ export default function App() {
     if (e.code === "Escape") {
       setIsExpanded(false);
     }
-    console.log("hello");
   }, []);
 
   useEffect(() => {
@@ -47,8 +46,8 @@ export default function App() {
 
   return (
     <>
-      <section className='px-6 relative bg-white z-10'>
-        <header className='flex justify-between items-center h-16 max-w-[1200px] mx-auto'>
+      <header className='px-6 relative bg-white z-10'>
+        <div className='flex justify-between items-center h-16 max-w-[1200px] mx-auto'>
           <div className='flex items-center'>
             <a
               href='#'
@@ -71,10 +70,13 @@ export default function App() {
           <div className='hidden md:block'>
             <CTAButton>request invite</CTAButton>
           </div>
-        </header>
-      </section>
+        </div>
+      </header>
       <main>
-        <section className='bg-neutral-very-light-gray pb-14 lg:pb-0'>
+        <section
+          aria-label='Intro section'
+          className='bg-neutral-very-light-gray pb-14 lg:pb-0'
+        >
           <div className='max-w-[1200px] mx-auto flex flex-col lg:flex-row-reverse'>
             <div className='bg-intro lg:flex-[3]' />
             <div className='lg:flex-[2] lg:self-center'>
@@ -95,7 +97,10 @@ export default function App() {
           </div>
         </section>
 
-        <section className='bg-neutral-light-grayish-blue py-12 lg:py-16'>
+        <section
+          aria-label='Feature section'
+          className='bg-neutral-light-grayish-blue py-12 lg:py-16'
+        >
           <div className='max-w-[1200px] mx-auto grid gap-6 lg:gap-10'>
             <div className='flex flex-col gap-4 items-center md:items-start text-center md:text-left px-6 lg:px-0'>
               <h2 className='text-3xl lg:text-4xl text-primary-dark-blue w-[200px] md:w-full'>
@@ -111,7 +116,10 @@ export default function App() {
           </div>
         </section>
 
-        <section className='bg-neutral-very-light-gray py-16'>
+        <section
+          aria-label='Article section'
+          className='bg-neutral-very-light-gray py-16'
+        >
           <div className='max-w-[1200px] mx-auto grid gap-6 lg:gap-10'>
             <h2 className='text-3xl lg:text-4xl text-primary-dark-blue text-center md:text-left md:ml-6 lg:ml-0'>
               Latest Articles
@@ -120,36 +128,47 @@ export default function App() {
           </div>
         </section>
       </main>
-      <footer className='bg-primary-dark-blue text-white py-12 px-6'>
+      <footer
+        aria-label='Info website'
+        className='bg-primary-dark-blue text-white py-12 px-6'
+      >
         <div className='max-w-[1200px] mx-auto flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start gap-6 md:gap-0'>
           <div className='flex-1 flex flex-col md:flex-row gap-6 md:gap-24'>
             <div className='grid gap-6 justify-center'>
               <a href='#'>
                 <Logo color='white' />
               </a>
-              <ul className='flex-1 flex gap-4 justify-center'>
+              <ul
+                aria-label='Social media'
+                className='flex-1 flex gap-4 justify-center'
+              >
                 <li>
                   <a href='#'>
+                    <span className='sr-only'>facebook</span>
                     <FacebookIcon />
                   </a>
                 </li>
                 <li>
                   <a href='#'>
+                    <span className='sr-only'>youtube</span>
                     <YoutubeIcon />
                   </a>
                 </li>
                 <li>
                   <a href='#'>
+                    <span className='sr-only'>twitter</span>
                     <TwitterIcon />
                   </a>
                 </li>
                 <li>
                   <a href='#'>
+                    <span className='sr-only'>pinterest</span>
                     <PinterestIcon />
                   </a>
                 </li>
                 <li>
                   <a href='#'>
+                    <span className='sr-only'>instagram</span>
                     <InstagramIcon />
                   </a>
                 </li>
@@ -159,7 +178,10 @@ export default function App() {
           </div>
           <div className='flex flex-col gap-6 items-center md:items-end'>
             <CTAButton>request invite</CTAButton>
-            <p className='text-neutral-grayish-blue capitalize'>
+            <p
+              aria-label='easybank copyright'
+              className='text-neutral-grayish-blue capitalize'
+            >
               &copy; easybank. all rights reserved
             </p>
           </div>
@@ -279,9 +301,10 @@ function MobileNavigation({
         isExpanded ? "translate-x-0" : "translate-x-full"
       )}
       onClick={handleClose}
+      aria-expanded={isExpanded}
     >
       <nav className='rounded-md bg-white' aria-label='Navigation Menu'>
-        <ul className='flex flex-col py-4'>
+        <ul className='flex flex-col py-4' aria-label='menu list'>
           {NAVIGATION_ITEM.map(({ id, label }) => {
             return (
               <li key={`${id}-${label}`} className='text-primary-dark-blue'>
@@ -364,11 +387,11 @@ function FooterNavigation() {
     }
   });
   return (
-    <nav>
-      <ul className='grid justify-center text-center md:text-left gap-3 lg:gap-20 md:grid-cols-2'>
-        <div className='grid gap-3'>{left}</div>
-        <div className='grid gap-3'>{right}</div>
-      </ul>
+    <nav aria-label='sitemap'>
+      <div className='grid justify-center text-center md:text-left gap-3 lg:gap-20 md:grid-cols-2'>
+        <ul className='grid gap-3'>{left}</ul>
+        <ul className='grid gap-3'>{right}</ul>
+      </div>
     </nav>
   );
 }
